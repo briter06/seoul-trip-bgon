@@ -1,7 +1,30 @@
 const $=s=>document.querySelector(s);
 const enc=s=>encodeURIComponent(s);
-const mapSearch=place=>'https://www.google.com/maps/search/?api=1&query='+enc(place);
-const routeUrl=(origin,destination,waypoints=[])=>`https://www.google.com/maps/dir/?api=1${origin?`&origin=${enc(origin)}`:''}&destination=${enc(destination)}${waypoints.length?`&waypoints=${enc(waypoints.join('|'))}`:''}`;
+const normalizePlace=place=>{
+  if(!place) return '';
+  const map={
+    'Transport':'Gyeongju Station',
+    'Busan hotel':'Busan Station',
+    'KTX':'Seoul Station',
+    'Current location':'Current location',
+    'SimpleStay Hotel Jongno':'SimpleStay Hotel Jongno',
+    'Seoul':'Seoul',
+    'Busan':'Busan',
+    'Gyeongju':'Gyeongju Historic District'
+  };
+  return map[place] || place;
+};
+const mapSearch=place=>`https://www.google.com/maps/search/?api=1&query=${enc(normalizePlace(place))}`;
+const routeUrl=(origin,destination,waypoints=[])=>{
+  const from=normalizePlace(origin);
+  const to=normalizePlace(destination);
+  const params=[];
+  if(from==='Current location') params.push(`&origin=${enc('Current location')}`);
+  else if(from) params.push(`&origin=${enc(from)}`);
+  params.push(`&destination=${enc(to)}`);
+  if(waypoints.length) params.push(`&waypoints=${enc(waypoints.map(normalizePlace).join('|'))}`);
+  return `https://www.google.com/maps/dir/?api=1${params.join('')}`;
+};
 
 const daysEl=$('#days');
 if(daysEl){
@@ -9,16 +32,17 @@ if(daysEl){
     const det=document.createElement('details');
     det.className='day';
     det.dataset.search=(d.date+' '+d.title+' '+d.city+' '+d.stops.flat().join(' ')).toLowerCase();
-    const routeOrigin=i===0?'Current location':d.stops[0][3];
-    const routeDestination=i===0?'Brussels Airport':d.stops[d.stops.length-1][3];
-    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="dayactions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${routeUrl(routeOrigin,routeDestination)}">🗺️ Open day route in Google Maps 🧭</a></div><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${d.stops.map(s=>`<article class="activity" data-activity="${(s.join(' ')).toLowerCase()}"><div class="time">${s[0]}</div><div><h3>${s[1]}</h3><p>${s[2]}</p><div class="meta"><a class="maplink" href="${mapSearch(s[3])}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a></div></div></article>`).join('')}</div></div>`;
+    const routeStops=d.stops.map(s=>normalizePlace(s[3])).filter(Boolean);
+    const routeOrigin=i===0?'Current location':routeStops[0];
+    const routeDestination=i===0?'Brussels Airport':routeStops[routeStops.length-1]||d.city;
+    const midStops=i===0?[]:routeStops.slice(1,-1);
+    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="dayactions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${routeUrl(routeOrigin,routeDestination,midStops)}">🗺️ Open day route in Google Maps 🧭</a></div><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${d.stops.map(s=>`<article class="activity" data-activity="${(s.join(' ')).toLowerCase()}"><div class="time">${s[0]}</div><div><h3>${s[1]}</h3><p>${s[2]}</p><div class="meta"><a class="maplink" href="${mapSearch(s[3])}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a></div></div></article>`).join('')}</div></div>`;
     daysEl.appendChild(det);
   });
 }
 
 $('#expand').onclick=()=>document.querySelectorAll('.day').forEach(d=>d.open=true);
 $('#collapse').onclick=()=>document.querySelectorAll('.day').forEach(d=>d.open=false);
-
 $('#search').addEventListener('input',e=>{
   const q=e.target.value.toLowerCase().trim();
   let n=0;
