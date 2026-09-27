@@ -9,11 +9,9 @@ if(daysEl){
     const det=document.createElement('details');
     det.className='day';
     det.dataset.search=(d.date+' '+d.title+' '+d.city+' '+d.stops.flat().join(' ')).toLowerCase();
-    const routeStops=d.stops.map(s=>s[3]).filter(Boolean);
-    const routeOrigin=i===0?'Current location':routeStops[0];
-    const routeDestination=i===0?'Brussels Airport':routeStops[routeStops.length-1]||d.city;
-    const midStops=i===0?[]:routeStops.slice(1,-1);
-    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="dayactions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${routeUrl(routeOrigin,routeDestination,midStops)}">🗺️ Open day route in Google Maps 🧭</a></div><div class="route">${routeStops.length?routeStops.join(' 🚶 '):d.city}<br><span>Google Maps may adjust the route based on available roads, transit, and stop limits.</span></div><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${d.stops.map(s=>`<article class="activity" data-activity="${(s.join(' ')).toLowerCase()}"><div class="time">${s[0]}</div><div><h3>${s[1]}</h3><p>${s[2]}</p><div class="meta"><a class="maplink" href="${mapSearch(s[3])}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a></div></div></article>`).join('')}</div></div>`;
+    const routeOrigin=i===0?'Current location':d.stops[0][3];
+    const routeDestination=i===0?'Brussels Airport':d.stops[d.stops.length-1][3];
+    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="dayactions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${routeUrl(routeOrigin,routeDestination)}">🗺️ Open day route in Google Maps 🧭</a></div><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${d.stops.map(s=>`<article class="activity" data-activity="${(s.join(' ')).toLowerCase()}"><div class="time">${s[0]}</div><div><h3>${s[1]}</h3><p>${s[2]}</p><div class="meta"><a class="maplink" href="${mapSearch(s[3])}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a></div></div></article>`).join('')}</div></div>`;
     daysEl.appendChild(det);
   });
 }
