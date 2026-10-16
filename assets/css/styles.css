@@ -1,10 +1,10 @@
 :root{
-  --ink:#072c48;
-  --muted:#566b78;
-  --paper:#f7fbff;
+  --ink:#17251f;
+  --muted:#66756e;
+  --paper:#f7f7f1;
   --card:#fff;
   --green:#164a76; /* primary accent (kept name for compatibility) */
-  --mint:#e6f3fb;  /* light blue background */
+  --mint:#e6f3fb;  /* light blue accent */
   --line:#d7eafc;
   --orange:#d97845;
   --shadow:0 12px 35px rgba(9,34,53,0.08);
