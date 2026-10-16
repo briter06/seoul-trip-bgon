@@ -3,7 +3,7 @@
     --muted:#66756e;
     --paper:#f7f7f1;
     --card:#fff;
-    --green:#5aa9d6;
+    --green:#2B9EDB;
     --mint:#eaf7ff;
     --line:#dfeef9;
     --orange:#d97845;
@@ -27,7 +27,7 @@ a:hover{
     text-decoration:underline
 }
 .hero{
-    background:linear-gradient(120deg,#173f33,#2f6b53);
+    background:linear-gradient(120deg,#0b4a78,#2b87c6);
     color:white;
     padding:42px 20px 34px
 }
@@ -49,7 +49,7 @@ a:hover{
 }
 .hero p{
     max-width:720px;
-    color:#e1eee4
+    color:#dff6ff
 }
 .stats{
     display:flex;
@@ -180,12 +180,12 @@ main{
     margin:0 0 18px
 }
 .route{
-    background:#f2f6f1;
+    background:#f1f8fb;
     border-radius:12px;
     padding:13px 15px;
     margin-bottom:18px;
     font-size:13px;
-    color:#42584a
+    color:#2b5770
 }
 .timeline{
     position:relative;
