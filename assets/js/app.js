@@ -23,8 +23,10 @@ function renderActivity(stop){
   const place = stop[3] || '';
   const external = stop[4] || '';
   const placeLink = place ? `<a class="maplink" href="${mapSearch(place)}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a>` : '';
+  // Add Naver link only for the hotel
+  const naverLink = (place && place === 'SimpleStay Hotel Jongno') ? ` <a class="naverlink" href="https://naver.me/5FD16ory" target="_blank" rel="noopener noreferrer">🧭 Naver</a>` : '';
   const externalLink = external ? ` <a class="tourlink" href="${external}" target="_blank" rel="noopener noreferrer">🔗 Tour details</a>` : '';
-  return `<article class="activity" data-activity="${(stop.join(' ')).toLowerCase()}"><div class="time">${time}</div><div><h3>${title}</h3><p>${desc}</p><div class="meta">${placeLink}${externalLink}</div></div></article>`;
+  return `<article class="activity" data-activity="${(stop.join(' ')).toLowerCase()}"><div class="time">${time}</div><div><h3>${title}</h3><p>${desc}</p><div class="meta">${placeLink}${naverLink}${externalLink}</div></div></article>`;
 }
 
 const daysEl=$('#days');
