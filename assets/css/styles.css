@@ -1,7 +1,7 @@
 :root{
     --ink:#17251f;
     --muted:#66756e;
-    --paper:#719CAA; /* page background set to requested color */
+    --paper:#f7f9fb;
     --card:#ffffff;
     --green:#9bdcf8; /* lighter blue accent */
     --mint:#f4fbff;  /* very light blue tints for backgrounds */
@@ -154,8 +154,7 @@ main{
     width:54px;
     height:54px;
     flex-shrink:0;
-    /* date boxes set to requested color */
-    background:#719CAA;
+    background:#eaf9ff;
     color:var(--green);
     border-radius:14px;
     font-weight:850
