@@ -15,17 +15,6 @@ const normalizePlace=place=>{
   return map[place] || place;
 };
 const mapSearch=place=>`https://www.google.com/maps/search/?api=1&query=${enc(normalizePlace(place))}`;
-const routeUrl=(origin,destination,waypoints=[],mode='')=>{
-  const from=normalizePlace(origin);
-  const to=normalizePlace(destination);
-  const params=[];
-  if(from==='Current location') params.push(`&origin=${enc('Current location')}`);
-  else if(from) params.push(`&origin=${enc(from)}`);
-  params.push(`&destination=${enc(to)}`);
-  if(waypoints.length) params.push(`&waypoints=${enc(waypoints.map(normalizePlace).join('|'))}`);
-  if(mode) params.push(`&travelmode=${enc(mode)}`);
-  return `https://www.google.com/maps/dir/?api=1${params.join('')}`;
-};
 
 function renderActivity(stop){
   const time = stop[0] || '';
@@ -44,14 +33,10 @@ if(daysEl){
     const det=document.createElement('details');
     det.className='day';
     det.dataset.search=(d.date+' '+d.title+' '+d.city+' '+d.stops.flat().join(' ')).toLowerCase();
-    const routeStops=d.stops.map(s=>normalizePlace(s[3])).filter(Boolean);
-    const routeOrigin=i===0?'Current location':routeStops[0];
-    const routeDestination=i===0?'Brussels Airport':routeStops[routeStops.length-1]||d.city;
-    const midStops=i===0?[]:routeStops.slice(1,-1);
-    const navUrl = routeUrl(routeOrigin, routeDestination, routeStops.slice(1), 'walking');
-    const routeViewUrl = routeUrl(routeOrigin, routeDestination, midStops);
+
     const timelineHtml = d.stops.map(renderActivity).join('');
-    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="dayactions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${routeViewUrl}">🗺️ Open day route in Google Maps 🧭</a> <a class="btn" target="_blank" rel="noopener noreferrer" href="${navUrl}">🧭 Open trip navigation</a></div><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${timelineHtml}</div></div>`;
+
+    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${timelineHtml}</div></div>`;
     daysEl.appendChild(det);
   });
 }
