@@ -4,7 +4,6 @@
     --muted:#66756e;
     --paper:#f7f9fb;
     --card:#ffffff;
-    --green:#9bdcf8; /* lighter blue accent */
     --mint:#f4fbff;  /* very light blue tints for backgrounds */
     --line:#eaf7ff;  /* pale blue lines */
     --orange:#d97845;
@@ -20,7 +19,7 @@ body{
     font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif
 }
 a{
-    color:var(--green);
+    color:var(--main-color);
     font-weight:650;
     text-decoration:none
 }
@@ -29,7 +28,7 @@ a:hover{
 }
 .hero{
     /* lighter blue hero gradient */
-    background:linear-gradient(120deg,#4aa3e8,#cfeeff);
+    background:linear-gradient(120deg,var(--main-color),#4aa3e8);
     color:white;
     padding:42px 20px 34px
 }
@@ -103,9 +102,9 @@ a:hover{
     cursor:pointer
 }
 .btn.primary{
-    background:var(--green);
+    background:var(--main-color);
     color:white;
-    border-color:var(--green)
+    border-color:var(--main-color);
 }
 main{
     max-width:1100px;
@@ -142,7 +141,7 @@ main{
 .day summary:after{
     content:'＋';
     margin-left:auto;
-    color:var(--green);
+    color:var(--main-color);
     font-size:23px;
     font-weight:400
 }
@@ -156,7 +155,7 @@ main{
     height:54px;
     flex-shrink:0;
     background:#eaf9ff;
-    color:var(--green);
+    color:var(--main-color);
     border-radius:14px;
     font-weight:850
 }
@@ -203,7 +202,7 @@ main{
 }
 .time{
     font-weight:800;
-    color:var(--green);
+    color:var(--main-color);
     font-size:13px;
     padding-top:2px
 }
@@ -239,7 +238,7 @@ main{
     color:var(--muted)
 }
 .done input{
-    accent-color:var(--green);
+    accent-color:var(--main-color);
     width:17px;
     height:17px
 }
@@ -272,7 +271,7 @@ main{
 }
 .totalval{
     font-weight:850;
-    color:var(--green)
+    color:var(--main-color)
 }
 @media(max-width:600px){
     .hero{
