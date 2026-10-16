@@ -1,11 +1,11 @@
 :root{
     --ink:#17251f;
     --muted:#66756e;
-    --paper:#f7f7f1;
-    --card:#fff;
-    --green:#2B9EDB;
-    --mint:#eaf7ff;
-    --line:#dfeef9;
+    --paper:#f7f9fb; /* slightly cooler paper */
+    --card:#ffffff;
+    --green:#9bdcf8; /* lighter blue accent */
+    --mint:#f4fbff;  /* very light blue tints for backgrounds */
+    --line:#eaf7ff;  /* pale blue lines */
     --orange:#d97845;
     --shadow:0 12px 35px #14251b0c
 }
@@ -27,7 +27,8 @@ a:hover{
     text-decoration:underline
 }
 .hero{
-    background:linear-gradient(120deg,#0b4a78,#2b87c6);
+    /* lighter blue hero gradient */
+    background:linear-gradient(120deg,#4aa3e8,#cfeeff);
     color:white;
     padding:42px 20px 34px
 }
@@ -49,7 +50,7 @@ a:hover{
 }
 .hero p{
     max-width:720px;
-    color:#dff6ff
+    color:#e8fbff
 }
 .stats{
     display:flex;
@@ -68,7 +69,7 @@ a:hover{
     position:sticky;
     top:0;
     z-index:5;
-    background:#f7f7f1ed;
+    background:#f7f9fbed;
     backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);
     padding:12px 20px
@@ -153,7 +154,8 @@ main{
     width:54px;
     height:54px;
     flex-shrink:0;
-    background:var(--mint);
+    /* make date boxes visibly light blue */
+    background:#eaf9ff; /* light blue */
     color:var(--green);
     border-radius:14px;
     font-weight:850
@@ -180,12 +182,12 @@ main{
     margin:0 0 18px
 }
 .route{
-    background:#f1f8fb;
+    background:#f7fbff;
     border-radius:12px;
     padding:13px 15px;
     margin-bottom:18px;
     font-size:13px;
-    color:#2b5770
+    color:#2b6b87
 }
 .timeline{
     position:relative;
