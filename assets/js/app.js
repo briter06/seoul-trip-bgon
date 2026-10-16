@@ -38,7 +38,39 @@ if(daysEl){
 
     const timelineHtml = d.stops.map(renderActivity).join('');
 
-    det.innerHTML=`<summary><div class="daynum">${String(i+1).padStart(2,'0')}</div><div class="dayhead"><h2>${d.date} – ${d.title}</h2><p>${d.city} · ${d.stops.length} planned stops</p></div></summary><div class="daybody"><div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div><div class="timeline">${timelineHtml}</div></div>`;
+    // parse month/day from d.date (e.g. "Tue · 27 Oct")
+    const parseDate = ds => {
+      if(!ds) return {month:'',day:''};
+      // try to find day and month
+      const m = ds.match(/(\d{1,2})\s*([A-Za-z]+)/);
+      if(m) return {day:m[1],month:m[2]};
+      const m2 = ds.match(/([A-Za-z]+)\s*(\d{1,2})/);
+      if(m2) return {month:m2[1],day:m2[2]};
+      return {month:'',day:ds};
+    };
+    const pd = parseDate(d.date);
+    const month = pd.month || '';
+    const dayNum = pd.day || '';
+
+    det.innerHTML = `
+      <summary>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="background:#e4eee6;color:#245b48;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;box-shadow:0 1px 0 rgba(0,0,0,0.04);">
+            <div style="font-size:12px;line-height:1;margin:0;">${month}</div>
+            <div style="font-size:18px;font-weight:800;line-height:1;margin-top:2px;">${dayNum}</div>
+          </div>
+          <div class="dayhead">
+            <h2 style="margin:0;font-size:1.05rem;color:#0b2f24;">${d.title}</h2>
+            <p style="margin:2px 0 0;color:#666;font-size:0. ninerem;">${d.city} · ${d.stops.length} planned stops</p>
+          </div>
+        </div>
+      </summary>
+      <div class="daybody">
+        <div class="totals"><span>Activity cost total (fixed)</span><span class="totalval">€ <span class="sum-eur">0.00</span> / ₩ <span class="sum-krw">0</span></span></div>
+        <div class="timeline">${timelineHtml}</div>
+      </div>
+    `;
+
     daysEl.appendChild(det);
   });
 }
