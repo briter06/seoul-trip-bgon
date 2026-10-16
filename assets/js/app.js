@@ -55,7 +55,7 @@ if(daysEl){
     det.innerHTML = `
       <summary>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="background:#e4eee6;color:#245b48;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;box-shadow:0 1px 0 rgba(0,0,0,0.04);">
+          <div style="background:#719CAA;color:#245b48;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;box-shadow:0 1px 0 rgba(0,0,0,0.04);">
             <div style="font-size:12px;line-height:1;margin:0;">${month}</div>
             <div style="font-size:18px;font-weight:800;line-height:1;margin-top:2px;">${dayNum}</div>
           </div>
