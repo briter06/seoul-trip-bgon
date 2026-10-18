@@ -1,56 +1,55 @@
-const $=s=>document.querySelector(s);
-const enc=s=>encodeURIComponent(s);
-const normalizePlace=place=>{
-  if(!place) return '';
-  const map={
-    'Transport':'Gyeongju Station',
-    'Busan hotel':'Busan Station',
-    'KTX':'Seoul Station',
-    'Current location':'Current location',
-    'SimpleStay Hotel Jongno':'SimpleStay Hotel Jongno',
-    'Seoul':'Seoul',
-    'Busan':'Busan',
-    'Gyeongju':'Gyeongju Historic District'
-  };
-  return map[place] || place;
-};
-const mapSearch=place=>`https://www.google.com/maps/search/?api=1&query=${enc(normalizePlace(place))}`;
+const $ = (s) => document.querySelector(s);
 
-function renderActivity(stop){
-  const time = stop[0] || '';
-  const title = stop[1] || '';
-  const desc = stop[2] || '';
-  const place = stop[3] || '';
-  const external = stop[4] || '';
-  const placeLink = place ? `<a class="maplink" href="${mapSearch(place)}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a>` : '';
-  // Add Naver link only for the hotel
-  const naverLink = (place && place === 'SimpleStay Hotel Jongno') ? ` <a class="naverlink" href="https://naver.me/5FD16ory" target="_blank" rel="noopener noreferrer">🧭 Naver</a>` : '';
-  const externalLink = external ? ` <a class="tourlink" href="${external}" target="_blank" rel="noopener noreferrer">🔗 Tour details</a>` : '';
-  return `<article class="activity" data-activity="${(stop.join(' ')).toLowerCase()}"><div class="time">${time}</div><div><h3>${title}</h3><p>${desc}</p><div class="meta">${placeLink}${naverLink}${externalLink}</div></div></article>`;
+function renderActivity(stop) {
+  const time = stop[0] || "";
+  const title = stop[1] || "";
+  const desc = stop[2] || "";
+  const location = stop[3] || {};
+  const googleMaps = location.maps || "";
+  const naver = location.naver || "";
+  const external = stop[4] || "";
+  const placeLink = googleMaps
+    ? `<a class="maplink" href="${googleMaps}" target="_blank" rel="noopener noreferrer">🗺️ Google Maps 🧭</a>`
+    : "";
+  const naverLink = naver
+    ? ` <a class="naverlink" href="${naver}" target="_blank" rel="noopener noreferrer">🧭 Naver</a>`
+      : "";
+  const externalLink = external
+    ? ` <a class="details" href="${external}" target="_blank" rel="noopener noreferrer">🔗 Details</a>`
+    : "";
+  return `<article class="activity" data-activity="${stop.join(" ").toLowerCase()}"><div class="time">${time}</div><div><h3>${title}</h3><p>${desc}</p><div class="meta">${placeLink}${naverLink}${externalLink}</div></div></article>`;
 }
 
-const daysEl=$('#days');
-if(daysEl){
-  days.forEach((d,i)=>{
-    const det=document.createElement('details');
-    det.className='day';
-    det.dataset.search=(d.date+' '+d.title+' '+d.city+' '+d.stops.flat().join(' ')).toLowerCase();
+const daysEl = $("#days");
+if (daysEl) {
+  days.forEach((d, i) => {
+    const det = document.createElement("details");
+    det.className = "day";
+    det.dataset.search = (
+      d.date +
+      " " +
+      d.title +
+      " " +
+      d.city +
+      " " +
+      d.stops.flatMap((stop) => [...stop, stop.mapLabel || ""]).join(" ")
+    ).toLowerCase();
 
-    const timelineHtml = d.stops.map(renderActivity).join('');
+    const timelineHtml = d.stops.map(renderActivity).join("");
 
     // parse month/day from d.date (e.g. "Tue · 27 Oct")
-    const parseDate = ds => {
-      if(!ds) return {month:'',day:''};
+    const parseDate = (ds) => {
+      if (!ds) return { month: "", day: "" };
       // try to find day and month
       const m = ds.match(/(\d{1,2})\s*([A-Za-z]+)/);
-      if(m) return {day:m[1],month:m[2]};
+      if (m) return { day: m[1], month: m[2] };
       const m2 = ds.match(/([A-Za-z]+)\s*(\d{1,2})/);
-      if(m2) return {month:m2[1],day:m2[2]};
-      return {month:'',day:ds};
+      if (m2) return { month: m2[1], day: m2[2] };
+      return { month: "", day: ds };
     };
     const pd = parseDate(d.date);
-    const month = pd.month || '';
-    const dayNum = pd.day || '';
+    const month = pd.month || "";
+    const dayNum = pd.day || "";
 
     det.innerHTML = `
       <summary>
@@ -75,17 +74,19 @@ if(daysEl){
   });
 }
 
-$('#expand').onclick=()=>document.querySelectorAll('.day').forEach(d=>d.open=true);
-$('#collapse').onclick=()=>document.querySelectorAll('.day').forEach(d=>d.open=false);
+$("#expand").onclick = () =>
+  document.querySelectorAll(".day").forEach((d) => (d.open = true));
+$("#collapse").onclick = () =>
+  document.querySelectorAll(".day").forEach((d) => (d.open = false));
 
-$('#search').addEventListener('input',e=>{
-  const q=e.target.value.toLowerCase().trim();
-  let n=0;
-  document.querySelectorAll('.day').forEach(d=>{
-    const match=d.dataset.search.includes(q);
-    d.style.display=match||!q?'':'none';
-    if(match)n++;
-    if(q&&match)d.open=true;
+$("#search").addEventListener("input", (e) => {
+  const q = e.target.value.toLowerCase().trim();
+  let n = 0;
+  document.querySelectorAll(".day").forEach((d) => {
+    const match = d.dataset.search.includes(q);
+    d.style.display = match || !q ? "" : "none";
+    if (match) n++;
+    if (q && match) d.open = true;
   });
-  $('#empty')&&($('#empty').style.display=n?'none':'block');
+  $("#empty") && ($("#empty").style.display = n ? "none" : "block");
 });
