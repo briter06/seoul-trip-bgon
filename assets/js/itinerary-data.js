@@ -89,7 +89,7 @@ const days = [
     city: "Seoul · DMZ fixed booking at 7:00 AM",
     stops: [
       [
-        "7:00 AM",
+        "7:20 AM",
         "DMZ tour departure · FIXED",
         "Bring tour confirmation and passport if required. Wear comfortable walking shoes. Meet at designated hotel lobby pickup point; confirm exact location with tour operator.",
         {
@@ -108,14 +108,17 @@ const days = [
         },
       ],
       [
-        "3:00–5:00 PM",
-        "Rest at hotel",
-        "Debrief and freshen up after morning tour.",
-        LOCATIONS.SIMPLE_STAY,
+        "2:00 PM",
+        "Deoksugung Palace",
+        "Something cool.",
+        {
+          maps: "https://maps.app.goo.gl/ifKJy4bVkBgFFBrR7",
+          naver: "https://naver.me/Fae6rYTz"
+        },
       ],
       [
-        "Night",
-        "Namdaemun Market",
+        "2:30 PM",
+        "Namdaemun Market and Sungnyemun Gate",
         "Discover a more traditional side of Seoul.",
         {
           maps: "https://maps.app.goo.gl/si8h57GYG3TW6HCg9",
@@ -123,7 +126,7 @@ const days = [
         },
       ],
       [
-        "Night",
+        "4:00 PM",
         "Myeongdong Korean BBQ Mongvely",
         "Let's eat like 'vacas lecheras'.",
         {
@@ -132,7 +135,7 @@ const days = [
         },
       ],
       [
-        "Night",
+        "7:00 PM",
         "Myeong-dong Cathedral",
         "Looks pretty.",
         {
