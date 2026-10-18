@@ -53,7 +53,7 @@ const days = [
         "Guide will be standing in front of the exit with a picket (Tripper). Meet the guide at Hyehwa Station Exit 4.",
         {
           maps: "https://maps.app.goo.gl/CgYoXRjzWQcF5qmB9",
-          naver: "https://naver.me/x1uEdPTK"
+          naver: "https://naver.me/x1uEdPTK",
         },
         "https://www.viator.com/tours/Seoul/Seoul-Small-Group-Evening-Walking-Tour-Best-City-Night-View-and-palace/d973-356476P1?m=69266&nid=VR.2ad63448-fa0e-1af4-af2b-a3d876ddb3f3.VT_EMAIL_TRV&dd_referrer=",
       ],
@@ -62,7 +62,7 @@ const days = [
         "Changgyeonggung Palace",
         "Walk ~10 minutes from Hyehwa Station; enjoy the palace night view and guided stories. Admission included.",
         {
-          maps: "https://maps.app.goo.gl/bBMyKrdAg2FyrcRTA"
+          maps: "https://maps.app.goo.gl/bBMyKrdAg2FyrcRTA",
         },
       ],
       [
@@ -70,7 +70,7 @@ const days = [
         "Kwangjang Market",
         "Food market for makgeolli, jeon, street food. Approx 1.5 hours. Admission included.",
         {
-          maps: "https://maps.app.goo.gl/MKNJbC68xmAdkiYF9"
+          maps: "https://maps.app.goo.gl/MKNJbC68xmAdkiYF9",
         },
       ],
       [
@@ -78,7 +78,7 @@ const days = [
         "Jogyesa Temple (tour end)",
         "Lanterns and closing point; tour ends in front of Jogyesa Temple (near Anguk Station). Guide will advise return options.",
         {
-          maps: "https://maps.app.goo.gl/2mmRHtxCzyLPVKqY9"
+          maps: "https://maps.app.goo.gl/2mmRHtxCzyLPVKqY9",
         },
       ],
     ],
@@ -92,24 +92,74 @@ const days = [
         "7:00 AM",
         "DMZ tour departure · FIXED",
         "Bring tour confirmation and passport if required. Wear comfortable walking shoes. Meet at designated hotel lobby pickup point; confirm exact location with tour operator.",
+        {
+          maps: "https://maps.app.goo.gl/MzrhAhY3msegyLgw6",
+          naver: "https://naver.me/GmpcXOSx",
+        },
+        "https://www.viator.com/tours/Seoul/Best-DMZ-Tour-from-Seoul/d973-58847P43",
       ],
       [
         "1:00 PM",
         "Return from DMZ tour",
         "Lunch at tour facilities or en route back to Seoul.",
-        "Seoul",
+        {
+          maps: "https://maps.app.goo.gl/KiWn1bRqasQYEfoU6",
+          naver: "https://naver.me/FTdicT2N",
+        },
       ],
       [
         "3:00–5:00 PM",
         "Rest at hotel",
         "Debrief and freshen up after morning tour.",
-        "SimpleStay Hotel Jongno",
+        LOCATIONS.SIMPLE_STAY,
       ],
       [
-        "6:00–8:30 PM",
-        "Evening in Myeongdong",
-        "Shopping, dinner, and nightlife. Return to hotel after.",
-        "Myeongdong",
+        "Night",
+        "Namdaemun Market",
+        "Discover a more traditional side of Seoul.",
+        {
+          maps: "https://maps.app.goo.gl/si8h57GYG3TW6HCg9",
+          naver: "https://naver.me/5bCjpmef"
+        },
+      ],
+      [
+        "Night",
+        "Myeongdong Korean BBQ Mongvely",
+        "Let's eat like 'vacas lecheras'.",
+        {
+          maps: "https://maps.app.goo.gl/8VcJSJLYwJoYYooB9",
+          naver: "https://naver.me/5PWoUvwv"
+        },
+      ],
+      [
+        "Night",
+        "Myeong-dong Cathedral",
+        "Looks pretty.",
+        {
+          maps: "https://maps.app.goo.gl/vjNmG9gZdVG3y61X8",
+          naver: "https://naver.me/GLhFG0nj"
+
+        },
+      ],
+      [
+        "Night",
+        "Myeondong Shopping Street",
+        "Bye bye money! Don't forget to go to Olive Young and Daiso",
+        {
+          maps: "https://maps.app.goo.gl/ikrkWSReFYB33fA3A",
+          naver: "https://naver.me/F7FKzLqQ"
+
+        },
+      ],
+      [
+        "Night",
+        "Cheonggyecheon",
+        "Riverside stroll, scenic bridges, and evening lights",
+        {
+          maps: "https://maps.app.goo.gl/3NjoTvR2br6YBXp48",
+          naver: "https://naver.me/FHOmTgkM"
+          
+        },
       ],
     ],
   },
