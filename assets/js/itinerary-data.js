@@ -113,7 +113,7 @@ const days = [
         "Something cool.",
         {
           maps: "https://maps.app.goo.gl/ifKJy4bVkBgFFBrR7",
-          naver: "https://naver.me/Fae6rYTz"
+          naver: "https://naver.me/Fae6rYTz",
         },
       ],
       [
@@ -122,7 +122,7 @@ const days = [
         "Discover a more traditional side of Seoul.",
         {
           maps: "https://maps.app.goo.gl/si8h57GYG3TW6HCg9",
-          naver: "https://naver.me/5bCjpmef"
+          naver: "https://naver.me/5bCjpmef",
         },
       ],
       [
@@ -131,7 +131,7 @@ const days = [
         "Let's eat like 'vacas lecheras'.",
         {
           maps: "https://maps.app.goo.gl/8VcJSJLYwJoYYooB9",
-          naver: "https://naver.me/5PWoUvwv"
+          naver: "https://naver.me/5PWoUvwv",
         },
       ],
       [
@@ -140,8 +140,7 @@ const days = [
         "Looks pretty.",
         {
           maps: "https://maps.app.goo.gl/vjNmG9gZdVG3y61X8",
-          naver: "https://naver.me/GLhFG0nj"
-
+          naver: "https://naver.me/GLhFG0nj",
         },
       ],
       [
@@ -150,8 +149,7 @@ const days = [
         "Bye bye money! Don't forget to go to Olive Young and Daiso",
         {
           maps: "https://maps.app.goo.gl/ikrkWSReFYB33fA3A",
-          naver: "https://naver.me/F7FKzLqQ"
-
+          naver: "https://naver.me/F7FKzLqQ",
         },
       ],
       [
@@ -160,8 +158,7 @@ const days = [
         "Riverside stroll, scenic bridges, and evening lights",
         {
           maps: "https://maps.app.goo.gl/3NjoTvR2br6YBXp48",
-          naver: "https://naver.me/FHOmTgkM"
-          
+          naver: "https://naver.me/FHOmTgkM",
         },
       ],
     ],
@@ -172,46 +169,72 @@ const days = [
     city: "Seoul · Hanbok fixed on this date",
     stops: [
       [
-        "8:00 AM",
+        "7:30 AM",
         "Breakfast at hotel",
         "Get ready; comfortable shoes are recommended.",
-        "SimpleStay Hotel Jongno",
+        LOCATIONS.SIMPLE_STAY,
       ],
       [
-        "8:30–9:00 AM",
-        "Hanbok rental & preparation",
-        "Travel to the booked rental shop; confirm rental duration and pickup time.",
-        "Hanbok Rental Shop",
+        "9:00 AM",
+        "Pick up Hanbok",
+        "Let's get pretty.",
+        LOCATIONS.ONE_DAY_HANBOK,
+        "https://www.onedayhanbok.com/en",
       ],
       [
-        "9:30–11:30 AM",
+        "9:30 AM",
         "Gyeongbokgung Palace",
-        "In hanbok for photos; explore grounds and museums. Main palace in Seoul.",
-        "Gyeongbokgung Palace",
+        "Another palace? Yeiii!",
+        {
+          maps: "https://maps.app.goo.gl/fQNtDbtgcLn65B518",
+          naver: "https://naver.me/5AuH7K2q",
+        },
       ],
       [
-        "12:00–1:00 PM",
+        "11:30 AM",
+        "Bukchon Hanok Village",
+        "I want to live here!",
+        {
+          maps: "https://maps.app.goo.gl/GiYxUW89UbBpXJTK8",
+          naver: "https://naver.me/5AuH7K2q",
+        },
+      ],
+      [
+        "1:30 PM",
+        "Return Hanbok",
+        "Let's get ugly again 😭",
+        LOCATIONS.ONE_DAY_HANBOK,
+        "https://www.onedayhanbok.com/en",
+      ],
+      [
+        "2:00 PM",
         "Lunch near palace",
         "Local restaurants or café; try traditional Korean dishes.",
-        "Seoul",
       ],
       [
-        "1:30–3:30 PM",
-        "Bukchon Hanok Village",
-        "Traditional wooden houses; narrow lanes perfect for hanbok photos; very touristy.",
-        "Bukchon Hanok Village",
-      ],
-      [
-        "3:30–5:00 PM",
-        "Insadong cultural street",
-        "Art galleries, tea houses, antique shops. Historic & artistic; return hanbok if not included.",
-        "Insadong",
-      ],
-      [
-        "5:30–7:00 PM",
-        "Namsan Tower or trails",
+        "3:00 PM - 6:00 PM",
+        "Namsan Cable Car + N Seoul Tower",
         "Cable car or hiking; panoramic views at sunset. Tower has restaurants & shops.",
-        "Namsan Tower",
+        {
+          maps: "https://maps.app.goo.gl/pv7dx5LhuV6oqa5E9",
+          naver: "https://naver.me/x525JB7c",
+        },
+      ],
+      ["7:00 PM", "Dinner near", "Yei, food!"],
+      [
+        "8:30 PM",
+        "Go to Hotel and ... rest?",
+        "Get ready for a crazy night.",
+        LOCATIONS.SIMPLE_STAY,
+      ],
+      [
+        "11:00 PM",
+        "Party night",
+        "Let's move that booty.",
+        {
+          maps: "https://maps.app.goo.gl/iiQ8u8Z1x9Fd3jqZA",
+          naver: "https://naver.me/54K8Z3Nu",
+        },
       ],
     ],
   },
