@@ -244,19 +244,26 @@ const days = [
     city: "Seoul → Busan · Long travel day",
     stops: [
       [
-        "6:00 AM",
-        "Breakfast & check out",
-        "Pack the night before; head to Seoul Station.",
-        "SimpleStay Hotel Jongno",
+        "9:30 AM",
+        "Store baggage at Storr",
+        "Bye bye baggage",
+        {
+          maps: "https://maps.app.goo.gl/HcQam6VbmGFPa8u88",
+          naver: "https://naver.me/xfbuUtXP"
+        },
+        "https://www.storr.kr/notice/38"
       ],
       [
-        "7:00–8:00 AM",
+        "10:28 AM",
         "KTX Seoul → Busan",
-        "Book exact train and allow time to board. Arrive Busan Station around 10:00 AM.",
-        "Seoul Station",
+        "Train to Busan 🧟",
+        {
+          maps: "https://maps.app.goo.gl/13zrA5H2ziMvzofB6",
+          naver: "https://naver.me/5K6GaoBq"
+        },
       ],
       [
-        "10:15–11:00 AM",
+        "1:30 PM",
         "Travel to Busan hotel",
         "Taxi or subway from Busan Station to hotel; luggage left at desk if needed.",
         "Busan hotel",
